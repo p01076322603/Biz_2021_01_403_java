@@ -21,5 +21,5 @@ hs_err_pid*
 #Eclipse 임시 설정
 *.launch
 
-#사용자 설정
+#사용자
 Test/
