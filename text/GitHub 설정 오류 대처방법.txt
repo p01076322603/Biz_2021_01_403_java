@@ -1,0 +1,7 @@
+GitHub 설정 오류 대처방법
+1. error : remote origin already exists.
+	- remote 주소를 등록하고 다시 등록하고자 할 때 등록 remote 주소가 잘못되어 다시 등록하고자 할 때 이미 주소가 등록되어 다시 등록되지 않는 현상.
+		가. remote 주소를 삭제
+			git remote remove origin
+		나. 다시 등록
+			git remote add origin https://github.com/#########/###.git

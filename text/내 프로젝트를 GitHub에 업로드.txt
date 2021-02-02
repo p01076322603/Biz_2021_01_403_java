@@ -1,0 +1,35 @@
+내 프로젝트를 GitHub에 업로드
+
+- 순서 -
+1. GitHub repository 생성
+	https://github.com/######### 접속
+	New repository 만들기
+
+2. local 폴더 repository 선언
+	local 폴더에서 git bash here -> git init
+		= local repository 만들기
+
+3. config 설정
+	git config --local user.name #########
+	git config --local user.email #########@###.###
+		= remote repository의 권한, 보안 설정
+
+4. remote 설정
+	git remote add origin https://github.com/#########/###.git
+		= 업로드 시킬 remote repository 주소 별명 설정 (= origin)
+
+※ GitHub 업로드 금지 설정 (gitignore.io 참고)
+	git console에서 touch .gitignore
+		= 로컬 폴더에 .gitignore 파일 생성, 업로드 금지 목록 작성 후 저장
+		
+5. 파일 add
+	git add .
+		= local repository의 모든 파일, 폴더를 업로드 하기 위해 압축
+
+6. commit 설정
+	git commit -m first
+		= 현재 시점에 업로드 한 정보의 comment를 설정
+
+7. push
+	git push -u origin master
+		= local repository(= master)의 정보를 origin(4번 참조)의 위치로 업로드
