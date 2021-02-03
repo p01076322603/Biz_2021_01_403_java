@@ -1,4 +1,4 @@
-# Java Project
+# J# Java Project
 ### 한국경영원 인재개발원
 ### SpringMVC 웹 개발자 과정
 
@@ -27,9 +27,10 @@
  	git add .
  	git commit -m "Text Text"
  	git push 또는 git push -u origin master
+* 5. 학원에 와서 제일 먼저 할 일
+	프로젝트 폴더에서 git bash 실행
+	git pull(매우 중요) : 동기화 하기
 
 ##### Git commit 명령 오류 상황
 * git commit -m 까지 입력 하면 : error 발생
 * git commit 까지 입력하면 : vi editor
-
-123
