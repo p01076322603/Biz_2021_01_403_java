@@ -31,3 +31,5 @@
 ##### Git commit 명령 오류 상황
 * git commit -m 까지 입력 하면 : error 발생
 * git commit 까지 입력하면 : vi editor
+
+123
