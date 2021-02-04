@@ -16,9 +16,9 @@ public class Test {
 
 				num1 += 1;
 
-				System.out.println(intDan + " x " + num1 + " = " + (intDan * num1) + "   " + 
-								   (intDan + 3) + " x " + num1 + " = " + ((intDan + 3) * num1) + "   " +
-								   (intDan + 6) + " x " + num1 + " = " + ((intDan + 6) * num1));
+				System.out.println(intDan +      " x " + num1 + " = " +  (intDan      * num1) + "   " + 
+								  (intDan + 3) + " x " + num1 + " = " + ((intDan + 3) * num1) + "   " +
+							      (intDan + 6) + " x " + num1 + " = " + ((intDan + 6) * num1));
 			}
 			
 			System.out.println();
