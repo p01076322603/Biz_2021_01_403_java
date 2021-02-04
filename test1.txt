@@ -5,5 +5,4 @@ public class Hello {
 		System.out.println("우리나라만세");
 	
 	}
-
 }
