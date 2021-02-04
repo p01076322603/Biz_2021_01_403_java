@@ -9,14 +9,16 @@ public class Var_03 {
 		System.out.println("----------");
 		
 		int intDan = 9;
-		int num1 = 1;
+		int num1 = 0;
+		
+		num1 += 1;
 		
 		System.out.print(intDan);
 		System.out.print(" x ");
 		System.out.print(num1);
 		System.out.print(" = ");
 		System.out.println(intDan * num1);
-
+		
 		num1 += 1;
 		
 		System.out.print(intDan);
@@ -80,8 +82,6 @@ public class Var_03 {
 		System.out.print(num1);
 		System.out.print(" = ");
 		System.out.println(intDan * num1);
-
-		num1 += 1;
 		
 		
 	}
