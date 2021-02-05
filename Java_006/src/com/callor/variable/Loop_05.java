@@ -26,8 +26,10 @@ public class Loop_05 {
 		System.out.println();
 		
 		for (int num = 12 ; num <= 20 ; num += 2) {
-			System.out.println(num);
+			System.out.println((num / 2) - 5);
 		}
 	}
 	
 }
+
+
