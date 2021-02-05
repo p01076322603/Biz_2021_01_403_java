@@ -29,7 +29,7 @@ public class Loop_05 {
 
 		System.out.println();
 		System.out.println("================================");
-		System.out.println("0 부터 10 까지 중 홀수의 합 : " + intSum);
+		System.out.println("0 부터 10 까지 중 짝수의 합 : " + intSum);
 		System.out.println();
 		
 		// ======================================================== //
