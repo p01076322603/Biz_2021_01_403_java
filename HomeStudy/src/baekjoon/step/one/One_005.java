@@ -1,8 +1,8 @@
-package baekjoon.stage.one;
+package baekjoon.step.one;
 
 import java.util.Scanner;
 
-public class one_005 {
+public class One_005 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
