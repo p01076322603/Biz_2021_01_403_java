@@ -19,6 +19,10 @@ public class ClassServiceV3 {
 	public void scope() {
 		System.out.println("정수를 입력하세요 >> ");
 		int intNum1 = scan.nextInt();
+		
+		// method 선언명령문에 void 키워드가 있으면
+		// 이 위치에 return; 명령문이 있는것과 같다
+		return;
 	}
 	
 	public void input() {
