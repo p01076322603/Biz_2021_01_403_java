@@ -4,7 +4,25 @@ import java.util.Scanner;
 
 public class Six_003 {
 
-	static boolean hans(int number) {
+	public static void main(String[] args) {
+
+		Scanner scan = new Scanner(System.in);
+		Six_003 six = new Six_003();
+		
+		int n = scan.nextInt();
+		int hansCount = 0;
+
+		for (int i = 0; i < n; i++) {
+			if (six.hans(i + 1) == true)
+				++hansCount;
+		}
+
+		scan.close();
+		System.out.println(six.hans(n));
+		System.out.println(hansCount);
+	}
+
+	boolean hans(int number) {
 
 		int arrayDigit = (int) Math.log10(number) + 1;
 		int arr[] = new int[arrayDigit];
@@ -22,7 +40,7 @@ public class Six_003 {
 				gapArr[i] = arr[i] - arr[i + 1];
 			}
 
-			for (int i = 0; i < arrayDigit - 2; i++) {
+			for (int i = 0; i < gapArr.length - 1; i++) {
 				if (gapArr[i] != gapArr[i + 1])
 					return false;
 			}
@@ -32,21 +50,5 @@ public class Six_003 {
 		} else {
 			return true;
 		}
-	}
-
-	public static void main(String[] args) {
-
-		Scanner scan = new Scanner(System.in);
-
-		int n = scan.nextInt();
-		int hansCount = 0;
-
-		for (int i = 0; i < n; i++) {
-			if (hans(i + 1) == true)
-				++hansCount;
-		}
-
-		scan.close();
-		System.out.println(hansCount);
 	}
 }
