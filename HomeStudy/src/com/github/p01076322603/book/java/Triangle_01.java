@@ -1,4 +1,4 @@
-package com.github.p01076322603.book;
+package com.github.p01076322603.book.java;
 
 public class Triangle_01 {
 
