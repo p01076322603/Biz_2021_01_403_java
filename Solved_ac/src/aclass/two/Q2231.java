@@ -10,8 +10,8 @@ public class Q2231 {
 		Scanner scan = new Scanner(System.in);
 
 		int n = scan.nextInt();
-		boolean isBreak = false;
 		int nLength = 0;
+		boolean isBreak = false;
 		
 		scan.close();
 		

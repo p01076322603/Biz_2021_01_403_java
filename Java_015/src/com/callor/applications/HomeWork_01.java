@@ -3,7 +3,7 @@ package com.callor.applications;
 import java.util.Random;
 import com.callor.applications.service.PrimeServiceV2;
 
-public class HomeWork_02 {
+public class HomeWork_01 {
 
 	public static void main(String[] args) {
 		
@@ -15,14 +15,17 @@ public class HomeWork_02 {
 
 		int rndNum = 0; // 지정된 범위 내 임의의 값을 저장할 변수
 		int rndSum = 0; // 반복문 내 소수의 합을 저장할 변수
+		int rndRange = 499; // 임의의 정수를 생성할 구간 최대치를 저장할 변수 - 1
 		int rowCount = 0; // 출력 값 열 구분을 위한 카운트 변수
 		
+		
 		// 임의의 정수 100개를 생성하고 그중 소수인 값들과 그 합을 출력하는 반복문
+		System.out.println("정수의 범위 : 2 ~ " + (rndRange + 1));
 		System.out.println("임의의 정수 100개 중 소수인 값 : ");
 		for (int i = 0; i < 100; i++) { // 100번 반복
 		
-			// 2 ~ 500 사이의 값을 생성해 rndNum에 보관
-			rndNum = rnd.nextInt(499) + 2; 
+			// 2 ~ rndRange 사이의 값을 생성해 rndNum에 보관
+			rndNum = rnd.nextInt(rndRange) + 2; 
 		
 			// prime() method에 rndNum값을 전달해 return 값이 -1이 아니면 return 출력
 			if (psV2.prime(rndNum) != (-1)) {
