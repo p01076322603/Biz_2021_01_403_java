@@ -27,8 +27,8 @@ public class Score_06 {
 		for (int i = 0; i < scoreVO.length; i++) {
 
 			int sum  = scoreVO[i].intKor;
-			sum += scoreVO[i].intEng;
-			sum += scoreVO[i].intMath;
+				sum += scoreVO[i].intEng;
+				sum += scoreVO[i].intMath;
 
 			float floatAvg = (float) sum / 3;
 			

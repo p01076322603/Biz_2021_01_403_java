@@ -1,8 +1,8 @@
-package com.github.p01076322603.book.algorithm;
+package com.github.p01076322603.book.algorithm.chap01;
 
 // 문제 이름 : 세 값의 대소 관계 13종류의 모든 조합에 대해
 // 중앙값을 구하여 출력하는 프로그램을 작성하세요
-public class Q4 {
+public class Q_04 {
 
 	static int median(int a, int b, int c) {
 

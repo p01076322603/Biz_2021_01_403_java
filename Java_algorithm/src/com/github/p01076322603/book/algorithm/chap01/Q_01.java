@@ -1,7 +1,7 @@
-package com.github.p01076322603.book.algorithm;
+package com.github.p01076322603.book.algorithm.chap01;
 
 // 문제 이름 : 네 값의 최댓값을 구하는 max4 메서드를 작성하세요
-public class Q1 {
+public class Q_01 {
 
 	static int max4(int a, int b, int c, int d) {
 
