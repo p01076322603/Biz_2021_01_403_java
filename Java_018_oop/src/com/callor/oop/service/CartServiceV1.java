@@ -14,9 +14,13 @@ public class CartServiceV1 {
 
 	public void inputCart() {
 
+		System.out.println("┌───────────────────────────────────┐");
+		System.out.println("|       쇼핑몰 장바구니 관리        |");
+		System.out.println("└───────────────────────────────────┘");
+		
 		for (int i = 0; i < 3; i++) {
 
-			System.out.println("       << " + (i + 1) + "번 정보 입력 >> ");
+			System.out.println("\t<< " + (i + 1) + "번 정보 입력 >>");
 
 			System.out.print("구매자 이름을 입력하세요 >> ");
 			String strUserName = scan.nextLine();
@@ -68,7 +72,6 @@ public class CartServiceV1 {
 
 			// 카트 정보 생성
 			cartVO = new CartVO();
-			
 			cartVO.setCartQty(intQty);
 			cartVO.setCartPrice(intPrice);
 			cartVO.setCartUserName(strUserName);
@@ -81,15 +84,19 @@ public class CartServiceV1 {
 
 	public void printCartList() {
 
+		System.out.println("┌───────────────────────────────────┐");
+		System.out.println("|              장바구니             |");
+		System.out.println("└───────────────────────────────────┘");
+		
 		// 배열은 배열.length 값을 참조하면 배열의 개수를 알 수 있었다
 		// List에서는 list.size() method를 호출하면 list 개수를 return 해준다
 
 		/* 코드의 효율성을 위해 size() method의 값을 넣은 변수를 미리 만들고
 		 * for 반복문에 대입한다 (size() method를 그대로 넣으면 for 반복문이
 		 * 시행될때마다 cartList의 길이를 체크하기 때문에 비효율적이다) */
-		int nSize = cartList.size();
+		int listSize = cartList.size();
 		
-		for (int i = 0; i < nSize; i++) {
+		for (int i = 0; i < listSize; i++) {
 			System.out.printf("%s\t%7s\t%d\t%d\n", 
 					cartList.get(i).getCartUserName(), 
 					cartList.get(i).getCartPName(),
