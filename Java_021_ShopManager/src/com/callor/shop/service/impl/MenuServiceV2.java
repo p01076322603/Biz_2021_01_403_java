@@ -41,7 +41,7 @@ public class MenuServiceV2 implements MenuService {
 			} else if (strMenu.equals("3")) {
 				cService.printIndivCart();
 			}else
-				System.out.println("메뉴 선택은 1, 2, 3, 4, Quit만 가능합니다\n");
+				System.out.println("메뉴 선택은 1, 2, 3, Quit만 가능합니다\n");
 		}
 	}
 }

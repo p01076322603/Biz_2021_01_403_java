@@ -31,8 +31,11 @@ public class CartServiceV2 implements CartService {
 			if (strUserName.equals(cartList.get(i).getUserName())
 					&& strProdName.equals(cartList.get(i).getProductName())) {
 
-				System.out.printf("현재 %s 고객의 장바구니에 %s 이(가) \n %d개 들어있습니다 (단가 %d원)\n", strUserName, strProdName,
-						cartList.get(i).getQty(), cartList.get(i).getPrice());
+				System.out.printf("현재 %s 고객의 장바구니에 %s 이(가) \n"
+						+ " %d개 들어있습니다 (단가 %d원)\n", 
+						strUserName, strProdName,
+						cartList.get(i).getQty(), 
+						cartList.get(i).getPrice());
 				int intQty = 0;
 				while (true) {
 					System.out.print("추가할 상품개수를 입력하세요 >> ");
@@ -51,7 +54,9 @@ public class CartServiceV2 implements CartService {
 				System.out.println();
 
 				cartList.get(i).setQty(cartList.get(i).getQty() + intQty);
-				cartList.get(i).setTotal(cartList.get(i).getPrice() * cartList.get(i).getQty());
+				cartList.get(i).setTotal(
+						cartList.get(i).getPrice() * 
+						cartList.get(i).getQty());
 				return;
 			}
 		}
