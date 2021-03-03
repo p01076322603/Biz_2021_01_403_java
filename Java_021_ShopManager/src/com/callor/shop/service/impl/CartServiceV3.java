@@ -118,8 +118,12 @@ public class CartServiceV3 implements CartService {
 		System.out.println("구매자\t    상품명\t단가\t수량\t합계");
 		System.out.println("---------------------------------------------");
 		for (int i = 0; i < listSize; i++) {
-			System.out.printf("%s\t%7s\t%d\t%d\t%d\n", cartList.get(i).getUserName(), cartList.get(i).getProductName(),
-					cartList.get(i).getPrice(), cartList.get(i).getQty(), cartList.get(i).getTotal());
+			System.out.printf("%s\t%7s\t%d\t%d\t%d\n", 
+					cartList.get(i).getUserName(), 
+					cartList.get(i).getProductName(),
+					cartList.get(i).getPrice(), 
+					cartList.get(i).getQty(), 
+					cartList.get(i).getTotal());
 			intProdSum++;
 			intPriceSum += cartList.get(i).getTotal();
 		}
@@ -161,8 +165,8 @@ public class CartServiceV3 implements CartService {
 						cartList.get(i).getPrice(), 
 						cartList.get(i).getQty(),
 						cartList.get(i).getTotal());
-				intPriceSum += cartList.get(i).getTotal();
 				intProdSum++;
+				intPriceSum += cartList.get(i).getTotal();
 			}
 
 		}
@@ -197,8 +201,8 @@ public class CartServiceV3 implements CartService {
 						cartList.get(i).getPrice(), 
 						cartList.get(i).getQty(),
 						cartList.get(i).getTotal());
-				intPriceSum += cartList.get(i).getTotal();
 				intProdSum++;
+				intPriceSum += cartList.get(i).getTotal();
 			}
 
 			System.out.println("---------------------------------------------");

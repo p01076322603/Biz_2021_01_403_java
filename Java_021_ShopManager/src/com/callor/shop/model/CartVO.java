@@ -2,15 +2,15 @@ package com.callor.shop.model;
 
 public class CartVO {
 
-	private String userName;
-	private String productName;
-	private String date;
-	private String time;
-	private int qty;
-	private int price;
-	private int total;
-
-	public String getUserName() {
+	private String userName;                          
+	private String productName;                       
+	private String date;                              
+	private String time;                              
+	private int qty;                                  
+	private int price;                                
+	private int total;                                
+                                                      
+	public String getUserName() {                     
 		return userName;
 	}
 	public void setUserName(String userName) {
