@@ -157,4 +157,16 @@ public class CartServiceV2 implements CartService {
 		System.out.println("\n=============================================");
 		System.out.println();
 	}
+
+	@Override
+	public void removeCart() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeCartAll() {
+		// TODO Auto-generated method stub
+		
+	}
 }

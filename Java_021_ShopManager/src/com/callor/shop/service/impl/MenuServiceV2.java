@@ -12,7 +12,7 @@ public class MenuServiceV2 implements MenuService {
 
 	public MenuServiceV2() {
 		scan = new Scanner(System.in);
-		cService = new CartServiceV2();
+		cService = new CartServiceV4();
 	}
 
 	public void selectMenu() {
@@ -20,15 +20,17 @@ public class MenuServiceV2 implements MenuService {
 		while (true) {
 
 			System.out.println("=============================================");
-			System.out.println("빛나라 쇼핑몰 2021 V2");
+			System.out.println("빛나라 쇼핑몰 2021 V4");
 			System.out.println("---------------------------------------------");
 			System.out.println("1. 장바구니 상품 담기");
 			System.out.println("2. 장바구니 전체 리스트 보기");
 			System.out.println("3. 구매자별 장바구니 리스트 보기");
 			System.out.println("4. 장바구니 삭제하기");
+			System.out.println("Delete. 장바구니 초기화");
 			System.out.println("Quit. 끝내기");
 			System.out.println("=============================================");
-
+			System.out.print("입력하세요 >> ");
+			
 			String strMenu = scan.nextLine();
 
 			if (strMenu.equalsIgnoreCase("Quit"))
@@ -40,8 +42,13 @@ public class MenuServiceV2 implements MenuService {
 				cService.printCart();
 			} else if (strMenu.equals("3")) {
 				cService.printIndivCart();
-			}else
-				System.out.println("메뉴 선택은 1, 2, 3, Quit만 가능합니다\n");
+			} else if (strMenu.equals("4")) {
+				cService.removeCart();
+			} else if (strMenu.equalsIgnoreCase("Delete")) {
+				cService.removeCartAll();
+			} else
+				System.out.println("메뉴 선택은 1, 2, 3, 4,\n"
+						+ "	Delete, Quit만 가능합니다\n");
 		}
 	}
 }

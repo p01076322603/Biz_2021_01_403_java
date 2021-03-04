@@ -1,6 +1,6 @@
 package com.callor.shop.model;
 
-public class CartVO {
+public class CartVO implements Comparable<CartVO> {
 
 	private String userName;                          
 	private String productName;                       
@@ -57,5 +57,9 @@ public class CartVO {
 	public String toString() {
 		return "CartVO [userName=" + userName + ", productName=" + productName + ", date=" + date + ", time=" + time
 				+ ", qty=" + qty + ", price=" + price + ", total=" + total + "]";
+	}
+	@Override
+	public int compareTo(CartVO o) {
+		return this.userName.charAt(0) - o.userName.charAt(0);
 	}
 }
