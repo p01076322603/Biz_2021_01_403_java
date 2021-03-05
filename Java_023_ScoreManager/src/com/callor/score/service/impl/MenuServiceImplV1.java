@@ -16,14 +16,14 @@ public class MenuServiceImplV1 implements MenuService {
 
 		while (true) {
 
-			System.out.println("============================================================");
+			System.out.println("=============================================================");
 			System.out.println("빛나라 고교 성적처리 시스템");
-			System.out.println("------------------------------------------------------------");
+			System.out.println("-------------------------------------------------------------");
 			System.out.printf("%d. 학생성적 점수 생성\n", Values.MAKE_SCORE);
 			System.out.printf("%d. 학생성적 점수 파일에 저장\n", Values.SAVE_SCORE);
 			System.out.printf("%d. 성적결과 확인\n", Values.LOAD_SCORE);
 			System.out.println("QUIT. 끝내기");
-			System.out.println("============================================================");
+			System.out.println("=============================================================");
 			System.out.print("메뉴를 선택하세요 >> ");
 
 			String strMenu = scan.nextLine();

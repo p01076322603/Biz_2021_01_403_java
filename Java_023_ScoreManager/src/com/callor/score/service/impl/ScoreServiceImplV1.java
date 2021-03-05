@@ -129,16 +129,17 @@ public class ScoreServiceImplV1 implements ScoreService {
 			System.out.print(score.getIntMusic() + "\t");
 			System.out.print(score.getIntHistory() + "\t");
 			System.out.print(score.getIntScoreSum() + "\t");
-			System.out.println(score.getFloatScoreAvg() + "\t");
+			System.out.printf("%3.2f\t\n", score.getFloatScoreAvg());
+			// 평균을 소수점 두번째 자리까지 출력
 		}
 
-		System.out.println("============================================================\n");
+		System.out.println("=============================================================\n");
 	}
 
 	private void printHeader() {
-		System.out.println("\n============================================================");
+		System.out.println("\n=============================================================");
 		System.out.println("순번\t국어\t영어\t수학\t음악\t국사\t총점\t평균");
-		System.out.println("------------------------------------------------------------");
+		System.out.println("-------------------------------------------------------------");
 	}
 
 }
