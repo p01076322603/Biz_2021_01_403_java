@@ -8,8 +8,8 @@ public class ScoreVO {
 	private int intMusic;
 	private int intHistory;
 	
-	private int intSum;
-	private float floatAvg;
+	private int intScoreSum;
+	private float floatScoreAvg;
 	
 	
 	public int getIntKor() {
@@ -42,24 +42,24 @@ public class ScoreVO {
 	public void setIntHistory(int intHistory) {
 		this.intHistory = intHistory;
 	}
-	public int getIntSum() {
-		return intSum;
+	public int getIntScoreSum() {
+		return intScoreSum;
 	}
-	public void setIntSum(int intSum) {
-		this.intSum = intSum;
+	public void setIntScoreSum(int intSum) {
+		this.intScoreSum = intSum;
 	}
-	public float getFloatAvg() {
-		return floatAvg;
+	public float getFloatScoreAvg() {
+		return floatScoreAvg;
 	}
-	public void setFloatAvg(float floatAvg) {
-		this.floatAvg = floatAvg;
+	public void setFloatScoreAvg(float floatAvg) {
+		this.floatScoreAvg = floatAvg;
 	}
 	
 	
 	@Override
 	public String toString() {
 		return "ScoreVO [intKor=" + intKor + ", intEng=" + intEng + ", intMath=" + intMath + ", intMusic=" + intMusic
-				+ ", intHistory=" + intHistory + ", intSum=" + intSum + ", floatAvg=" + floatAvg + "]";
+				+ ", intHistory=" + intHistory + ", intSum=" + intScoreSum + ", floatAvg=" + floatScoreAvg + "]";
 	}
 	
 }

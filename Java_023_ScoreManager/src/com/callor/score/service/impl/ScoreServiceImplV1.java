@@ -11,52 +11,59 @@ import java.util.Random;
 
 import com.callor.score.model.ScoreVO;
 import com.callor.score.service.ScoreService;
+import com.callor.score.service.values.Values;
 
 public class ScoreServiceImplV1 implements ScoreService {
 
-	List<ScoreVO> strLines;
-	List<Integer> rndList;
 	String fileName;
-	
+	List<Integer> rndScore;
+	List<ScoreVO> scoreList;
+
 	public ScoreServiceImplV1() {
+		/* 기본 생성자로 인스턴스가 초기화되면 기본으로 설정할 
+		 * 파일경로를 매개변수로 다른 생성자 호출 */
+		this("src/com/callor/score/score.txt"); 
 	}
 	
 	public ScoreServiceImplV1(String fileName) {
-		strLines = new ArrayList<ScoreVO>();
-		rndList = new ArrayList<Integer>();
 		this.fileName = fileName;
+		rndScore = new ArrayList<Integer>();
+		scoreList = new ArrayList<ScoreVO>();
 	}
-	
+
 	public void makeScore() {
-		
+
 		Random rnd = new Random();
-		for (int i = 0; i < 100; i++) {
-			rndList.add(rnd.nextInt(100) + 1);
+
+		int studentNum = 20; // 학생 20명의 점수를 난수로 생성
+		for (int i = 0; i < studentNum * Values.SUBJECT_COUNT; i++) { 
+			rndScore.add(rnd.nextInt(100) + 1);
 		}
+		
+		System.out.println("학생 점수가 생성되었습니다\n");
 	}
 
 	public void saveScoreToFile() {
 
 		FileWriter fileWriter = null;
 		PrintWriter printer = null;
-		
+
 		try {
-			fileWriter = new FileWriter(this.fileName);
+			fileWriter = new FileWriter(fileName);
 			printer = new PrintWriter(fileWriter);
-			
+
 			int printCount = 0;
-			for (int rndNum : rndList) {
-				
+			for (Integer rndNum : rndScore) { // 학생 점수를 file에 저장
+
 				printer.print(rndNum + ":");
-				if (++printCount % 5 == 0) {
-					printer.println();
+				if (++printCount % Values.SUBJECT_COUNT == 0) {
+					printer.println(); // 과목의 개수만큼 출력하고 줄바꿈
 				}
 			}
-			
 			printer.close();
 			fileWriter.close();
-			
-			System.out.println("파일 저장 완료");
+
+			System.out.println("학생 점수를 저장하였습니다\n");
 			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -64,42 +71,74 @@ public class ScoreServiceImplV1 implements ScoreService {
 	}
 
 	public void loadScoreFromFile() {
-		
-		FileReader fileReader;
-		BufferedReader buffer;
-		
+
+		FileReader fileReader = null;
+		BufferedReader buffer = null;
+
 		try {
-			fileReader = new FileReader(this.fileName);
+			fileReader = new FileReader(fileName);
 			buffer = new BufferedReader(fileReader);
-			
-			String str = "";
-			String[] strArr = {};
-			
-			while (true) {
+
+			String strLine = "";
+			String[] strScore = {};
+			ScoreVO scoreVO;
+		
+			while (true) { // file에서 학생 점수를 가져와 과목 변수에 저장
+
+				strLine = buffer.readLine();
+				if (strLine == null) break; // file에서 가져오는 String 값이 null이면 반복문 중단
 				
-				ScoreVO scoreVO = new ScoreVO();
-				
-				str = buffer.readLine();
-				strArr = str.split(":");
-				
-				scoreVO.setIntKor(Integer.valueOf(strArr[0]));
-				scoreVO.setIntEng(Integer.valueOf(strArr[1]));
-				scoreVO.setIntMath(Integer.valueOf(strArr[2]));
-				scoreVO.setIntMusic(Integer.valueOf(strArr[3]));
-				scoreVO.setIntHistory(Integer.valueOf(strArr[4]));
-				
-				
-				
+				strScore = strLine.split(":");
+
+				scoreVO = new ScoreVO();
+				scoreVO.setIntKor(Integer.valueOf(strScore[0]));
+				scoreVO.setIntEng(Integer.valueOf(strScore[1]));
+				scoreVO.setIntMath(Integer.valueOf(strScore[2]));
+				scoreVO.setIntMusic(Integer.valueOf(strScore[3]));
+				scoreVO.setIntHistory(Integer.valueOf(strScore[4]));
+				scoreList.add(scoreVO);
 			}
-			
 			buffer.close();
 			fileReader.close();
-			
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
+		int scoreSum = 0;
+		for (ScoreVO score : scoreList) { // 학생 점수의 합과 평균을 계산
+		
+			scoreSum = score.getIntKor()
+					 + score.getIntEng()
+					 + score.getIntMath()
+					 + score.getIntMusic()
+					 + score.getIntHistory();
+			score.setIntScoreSum(scoreSum);
+			score.setFloatScoreAvg((float) scoreSum / Values.SUBJECT_COUNT);
+		}
+
+		printHeader(); // 이하 출력
+
+		int scoreNumber = 0;
+		for (ScoreVO score : scoreList) {
+
+			System.out.print(++scoreNumber + "\t");
+			System.out.print(score.getIntKor() + "\t");
+			System.out.print(score.getIntEng() + "\t");
+			System.out.print(score.getIntMath() + "\t");
+			System.out.print(score.getIntMusic() + "\t");
+			System.out.print(score.getIntHistory() + "\t");
+			System.out.print(score.getIntScoreSum() + "\t");
+			System.out.println(score.getFloatScoreAvg() + "\t");
+		}
+
+		System.out.println("============================================================\n");
+	}
+
+	private void printHeader() {
+		System.out.println("\n============================================================");
+		System.out.println("순번\t국어\t영어\t수학\t음악\t국사\t총점\t평균");
+		System.out.println("------------------------------------------------------------");
 	}
 
 }
-
-	
