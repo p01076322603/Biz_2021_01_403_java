@@ -35,8 +35,8 @@ public class ScoreServiceImplV1 implements ScoreService {
 
 		Random rnd = new Random();
 
-		int studentNum = 20; // 학생 20명의 점수를 난수로 생성
-		for (int i = 0; i < studentNum * Values.SUBJECT_COUNT; i++) { 
+		// 학생들의 점수를 난수로 생성 (학생 수 * 과목 수)
+		for (int i = 0; i < Values.STUDENT_COUNT * Values.SUBJECT_COUNT; i++) { 
 			rndScore.add(rnd.nextInt(100) + 1);
 		}
 		
