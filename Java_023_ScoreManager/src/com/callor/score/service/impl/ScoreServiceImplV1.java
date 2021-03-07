@@ -54,7 +54,7 @@ public class ScoreServiceImplV1 implements ScoreService {
 			printer = new PrintWriter(fileWriter);
 
 			int printCount = 0;
-			for (Integer rndNum : rndScore) { // 학생 점수를 file에 저장
+			for (Integer rndNum : rndScore) { // 학생 점수를 파일에 저장
 
 				printer.print(rndNum + ":");
 				if (++printCount % Values.SUBJECT_COUNT == 0) {
@@ -80,19 +80,21 @@ public class ScoreServiceImplV1 implements ScoreService {
 			fileReader = new FileReader(fileName);
 			buffer = new BufferedReader(fileReader);
 
-			while (true) { // 파일에서 학생 점수를 가져와 각각 과목 변수에 저장
+			while (true) { // 파일에서 학생 점수를 가져와 scoreList에 저장
 
 				String strLine = buffer.readLine();
 				if (strLine == null) break; // 파일에서 가져오는 값이 null이면 반복문 중단
-				
 				String[] strScore = strLine.split(":");
 
 				ScoreVO scoreVO = new ScoreVO();
-				scoreVO.setIntKor(Integer.valueOf(strScore[0]));
-				scoreVO.setIntEng(Integer.valueOf(strScore[1]));
-				scoreVO.setIntMath(Integer.valueOf(strScore[2]));
-				scoreVO.setIntMusic(Integer.valueOf(strScore[3]));
-				scoreVO.setIntHistory(Integer.valueOf(strScore[4]));
+				// 파일에서 점수를 가져와 arrSubjectScores 배열에 저장
+				for (int i = 0; i < Values.SUBJECT_COUNT; i++) {
+				
+					scoreVO.setSubjectScores(i, Integer.valueOf(strScore[i]));
+				}
+		
+				// arrSubjectScores 점수 배열에 저장된 값을 각각 인스턴스변수에 저장
+				scoreVO.subjectScoreInIt();
 				scoreList.add(scoreVO);
 			}
 			buffer.close();
@@ -102,41 +104,53 @@ public class ScoreServiceImplV1 implements ScoreService {
 			e.printStackTrace();
 		}
 
-		int scoreSum = 0;
-		for (ScoreVO score : scoreList) { // 학생 점수의 합과 평균을 계산
-		
-			scoreSum = score.getIntKor()
-					 + score.getIntEng()
-					 + score.getIntMath()
-					 + score.getIntMusic()
-					 + score.getIntHistory();
+		int listSize = scoreList.size();
+		for (int i = 0; i < listSize; i++) {
+
+			ScoreVO score = scoreList.get(i);
+			int scoreSum = 0;
+			int[] subjectScores = score.getSubjectScores();
+
+			// 점수 배열에서 과목별 점수를 가져와 scoreSum에 전부 더한다
+			for (int j = 0; j < Values.SUBJECT_COUNT; j++) {
+				scoreSum += subjectScores[j];
+			}
+
 			score.setIntScoreSum(scoreSum);
 			score.setFloatScoreAvg((float) scoreSum / Values.SUBJECT_COUNT);
 		}
 
 		printHeader(); // 이하 출력
 
-		int scoreNumber = 0;
-		for (ScoreVO score : scoreList) {
+		int scoreNumber = 0; 
+		for (int i = 0; i < listSize; i++) {
+		
+			ScoreVO score = scoreList.get(i);
+			int[] subjectScores = score.getSubjectScores();
 
 			System.out.print(++scoreNumber + "\t");
-			System.out.print(score.getIntKor() + "\t");
-			System.out.print(score.getIntEng() + "\t");
-			System.out.print(score.getIntMath() + "\t");
-			System.out.print(score.getIntMusic() + "\t");
-			System.out.print(score.getIntHistory() + "\t");
+			
+			// 배열에서 점수를 가져와서 출력
+			for (int j = 0; j < Values.SUBJECT_COUNT; j++) {
+				System.out.print(subjectScores[j] + "\t");
+			}
+			
 			System.out.print(score.getIntScoreSum() + "\t");
 			System.out.printf("%3.2f\t\n", score.getFloatScoreAvg());
 			// 평균을 소수점 두번째 자리까지 출력
 		}
 
 		System.out.println("=============================================================\n");
+//		System.out.println("======================================================================\n");
 	}
 
 	private void printHeader() {
 		System.out.println("\n=============================================================");
 		System.out.println("순번\t국어\t영어\t수학\t음악\t국사\t총점\t평균");
 		System.out.println("-------------------------------------------------------------");
+//		System.out.println("\n======================================================================");
+//		System.out.println("순번\t국어\t영어\t수학\t음악\t국사\t체육\t총점\t평균");
+//		System.out.println("----------------------------------------------------------------------");
 	}
 
 }

@@ -1,7 +1,7 @@
 package com.callor.score.service.values;
 
 public class Values {
-	public static int SUBJECT_COUNT = 5;  // 과목 개수
+	public static int SUBJECT_COUNT = 5;  // ScoreVO의 과목 수
 	public static int STUDENT_COUNT = 20; // 학생의 수
 	
 	public final static int MENU_FIRST = 1; // 메뉴 시작번호
