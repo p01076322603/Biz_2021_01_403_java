@@ -36,7 +36,8 @@ public class ScoreServiceImplV1 implements ScoreService {
 		Random rnd = new Random();
 
 		// 학생들의 점수를 난수로 생성 (학생 수 * 과목 수)
-		for (int i = 0; i < Values.STUDENT_COUNT * Values.SUBJECT_COUNT; i++) { 
+		int rndScoreSample = Values.STUDENT_COUNT * Values.SUBJECT_COUNT;
+		for (int i = 0; i < rndScoreSample; i++) { 
 			rndScore.add(rnd.nextInt(100) + 1);
 		}
 		
@@ -57,13 +58,13 @@ public class ScoreServiceImplV1 implements ScoreService {
 
 				printer.print(rndNum + ":");
 				if (++printCount % Values.SUBJECT_COUNT == 0) {
-					printer.println(); // 과목의 개수만큼 출력하고 줄바꿈
+					printer.println(); // 과목의 개수만큼 저장하고 줄바꿈
 				}
 			}
 			printer.close();
 			fileWriter.close();
 
-			System.out.println("학생 점수를 저장하였습니다\n");
+			System.out.println("학생 점수를 파일에 저장하였습니다\n");
 			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -79,18 +80,14 @@ public class ScoreServiceImplV1 implements ScoreService {
 			fileReader = new FileReader(fileName);
 			buffer = new BufferedReader(fileReader);
 
-			String strLine = "";
-			String[] strScore = {};
-			ScoreVO scoreVO;
-		
-			while (true) { // file에서 학생 점수를 가져와 과목 변수에 저장
+			while (true) { // 파일에서 학생 점수를 가져와 각각 과목 변수에 저장
 
-				strLine = buffer.readLine();
-				if (strLine == null) break; // file에서 가져오는 String 값이 null이면 반복문 중단
+				String strLine = buffer.readLine();
+				if (strLine == null) break; // 파일에서 가져오는 값이 null이면 반복문 중단
 				
-				strScore = strLine.split(":");
+				String[] strScore = strLine.split(":");
 
-				scoreVO = new ScoreVO();
+				ScoreVO scoreVO = new ScoreVO();
 				scoreVO.setIntKor(Integer.valueOf(strScore[0]));
 				scoreVO.setIntEng(Integer.valueOf(strScore[1]));
 				scoreVO.setIntMath(Integer.valueOf(strScore[2]));

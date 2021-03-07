@@ -10,7 +10,7 @@ public class ScoreVO {
 	
 	private int intScoreSum;
 	private float floatScoreAvg;
-	
+
 	
 	public int getIntKor() {
 		return intKor;
