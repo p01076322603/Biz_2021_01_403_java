@@ -26,8 +26,8 @@ public class ScoreVO {
 //		intPhysical = arrSubjectScores[5];
 	}
 	
-	public void setSubjectScores(int arrNum, int score) {
-		arrSubjectScores[arrNum] = score;
+	public void setSubjectScores(int index, int score) {
+		arrSubjectScores[index] = score;
 	}
 	
 	public int[] getSubjectScores() {

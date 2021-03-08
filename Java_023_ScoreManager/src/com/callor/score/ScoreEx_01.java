@@ -31,8 +31,9 @@ public class ScoreEx_01 {
 			} else if (intMenu == Values.LOAD_SCORE) {
 				sService.loadScoreFromFile();
 	
+				// MenuServiceImplV1에서 유효성 검사 실패시 메뉴를 다시 호출
 			} else System.out.printf("메뉴는 %d ~ %d, QUIT 중에 선택해주세요\n\n",
-					Values.MENU_FIRST, Values.MENU_LAST); // 유효성 검사 실패시 메뉴를 다시 호출
+					Values.MENU_FIRST, Values.MENU_LAST); 
 		}
 	
 	}

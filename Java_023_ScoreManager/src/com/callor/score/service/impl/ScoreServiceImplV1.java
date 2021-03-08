@@ -89,7 +89,6 @@ public class ScoreServiceImplV1 implements ScoreService {
 				ScoreVO scoreVO = new ScoreVO();
 				// 파일에서 점수를 가져와 arrSubjectScores 배열에 저장
 				for (int i = 0; i < Values.SUBJECT_COUNT; i++) {
-				
 					scoreVO.setSubjectScores(i, Integer.valueOf(strScore[i]));
 				}
 		
@@ -105,10 +104,11 @@ public class ScoreServiceImplV1 implements ScoreService {
 		}
 
 		int listSize = scoreList.size();
+		int scoreSum = 0;
 		for (int i = 0; i < listSize; i++) {
 
 			ScoreVO score = scoreList.get(i);
-			int scoreSum = 0;
+			scoreSum = 0;
 			int[] subjectScores = score.getSubjectScores();
 
 			// 점수 배열에서 과목별 점수를 가져와 scoreSum에 전부 더한다
