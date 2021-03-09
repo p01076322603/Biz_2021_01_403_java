@@ -1,14 +1,14 @@
 package com.callor.iolist;
 
-import com.callor.iolist.service.ListService;
+import com.callor.iolist.service.ListServiceV2;
 
 public class ioListEx_01 {
 
 	public static void main(String[] args) {
 		
-		ListService lService = new ListService();
+		ListServiceV2 lService = new ListServiceV2();
 		
-		lService.makeIoList();
-		lService.printIoData();
+		lService.maketradeList();
+		lService.printTradeList();
 	}
 }
