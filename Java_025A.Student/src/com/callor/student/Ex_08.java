@@ -18,12 +18,15 @@ public class Ex_08 {
 
 	for (int i = 0; i < numArr.length; i++) {
 
-	    for (int j = 2; j < numArr[i]; j++) {
+	    int j = 0;
+	    for (j = 2; j < numArr[i]; j++) {
 		if (numArr[i] % j == 0) {
 		    break;
-		} else if (j == numArr[i]) {
-		    System.out.println(numArr[i] + " ");
 		}
+	    }
+	 
+	    if (numArr[i] == j) {
+		System.out.println(numArr[i]);
 	    }
 	}
     }
