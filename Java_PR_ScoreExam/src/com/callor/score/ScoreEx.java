@@ -26,7 +26,6 @@ public class ScoreEx {
 		sService.saveScoreToList();
 	    } else if (intMenu == Values.LIST_TO_FILE) {
 		sService.makeScoreToFile();
-		sService.makeScoreAvgTotal();
 	    } else if (intMenu == Values.PRINT_SCORE) {
 		sService.printScoreList();
 

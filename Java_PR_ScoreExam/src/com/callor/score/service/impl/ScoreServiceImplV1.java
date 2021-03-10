@@ -159,29 +159,25 @@ public class ScoreServiceImplV1 implements ScoreService {
 	    fileWriter.close();
 
 	    System.out.println("학생 성적을 파일에 성공적으로 저장하였습니다\n");
-	    
+
 	} catch (IOException e) {
 	    System.out.println("파일에 성적을 입력하는 도중 문제가 발생했습니다");
 	    return;
 	}
     }
 
-    public void makeScoreAvgTotal() {
+    public ScoreVO makeScoreAvgTotal(ScoreVO score) {
 
 	int scoreSum = 0;
-	int listSize = scoreList.size();
-	for (int i = 0; i < listSize; i++) {
 
-	    ScoreVO score = scoreList.get(i);
+	scoreSum = score.getIntKor();
+	scoreSum += score.getIntEng();
+	scoreSum += score.getIntMath();
+	scoreSum += score.getIntMusic();
 
-	    scoreSum = score.getIntKor();
-	    scoreSum += score.getIntEng();
-	    scoreSum += score.getIntMath();
-	    scoreSum += score.getIntMusic();
-
-	    score.setScoreSum(scoreSum);
-	    score.setScoreAvg((float) scoreSum / Values.MAX_SUBJECT);
-	}
+	score.setScoreSum(scoreSum);
+	score.setScoreAvg((float) scoreSum / Values.MAX_SUBJECT);
+	return score;
     }
 
     public void printScoreList() {
@@ -198,10 +194,24 @@ public class ScoreServiceImplV1 implements ScoreService {
 	    int[] subjectScoreSum = new int[4];
 	    int allScoreSum = 0;
 	    float avgScoreSum = 0;
-	    int listSize = scoreList.size();
-	    for (int i = 0; i < listSize; i++) {
+	    int listSize = 0;
+	    while (true) {
 
-		ScoreVO score = scoreList.get(i);
+		String strLine = buffer.readLine();
+		if (strLine == null) {
+		    break;
+		}
+		listSize++;
+		String[] scoreArr = strLine.split(":");
+		ScoreVO score = new ScoreVO();
+
+		score.setStudentID(scoreArr[0]);
+		score.setIntKor(Integer.valueOf(scoreArr[1]));
+		score.setIntEng(Integer.valueOf(scoreArr[2]));
+		score.setIntMath(Integer.valueOf(scoreArr[3]));
+		score.setIntMusic(Integer.valueOf(scoreArr[4]));
+
+		makeScoreAvgTotal(score);
 
 		System.out.printf("%s\t%d\t%d\t%d\t%d\t%d\t%3.2f\n", 
 			score.getStudentID(), score.getIntKor(),
@@ -225,11 +235,11 @@ public class ScoreServiceImplV1 implements ScoreService {
 		    subjectScoreSum[2],
 		    subjectScoreSum[3], 
 		    allScoreSum);
-	    System.out.printf("평균:\t%3.2f\t%3.2f\t%3.2f\t%3.2f\t\t%3.2f\n",
+	    System.out.printf("평균:\t%3.2f\t%3.2f\t%3.2f\t%3.2f\t\t%3.2f\n", 
 		    (float) subjectScoreSum[0] / listSize,
-		    (float) subjectScoreSum[1] / listSize,
+		    (float) subjectScoreSum[1] / listSize, 
 		    (float) subjectScoreSum[2] / listSize,
-		    (float) subjectScoreSum[3] / listSize,
+		    (float) subjectScoreSum[3] / listSize, 
 		    (float) avgScoreSum / listSize);
 	    System.out.println(Values.dLine(Values.LINE_LENGTH) + "\n");
 
