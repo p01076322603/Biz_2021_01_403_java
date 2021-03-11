@@ -18,6 +18,7 @@ public class Ex_10 {
 
     public static void main(String[] args) {
 	
+<<<<<<< Updated upstream
 	int num = 7;
 	
 	System.out.println("==========");
@@ -25,5 +26,14 @@ public class Ex_10 {
 	    System.out.printf("%d x %d = %2d\n", num, (i + 1), (i + 1) * num);
 	}
 	System.out.println("==========");
+=======
+    	int num = 7;
+    	
+    	System.out.println("==========");
+    	for (int i = 0; i < 9; i++) {
+    		System.out.printf("%d x %d = %d\n", 7, (i + 1), 7 * (i + 1));
+    	}
+    	System.out.println("==========");
+>>>>>>> Stashed changes
     }
 }
