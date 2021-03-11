@@ -8,14 +8,15 @@ public class Ex_04 {
 	
 	// 배열 10개를 선언
 	StudentVO[] stdArray = new StudentVO[10];
-
+	
+	
 	for (int i = 0; i < stdArray.length; i++) {
 	    stdArray[i] = new StudentVO();
 	}
 	
 	int index = 2;
-	stdArray[index] = null;
 	
+	stdArray[index] = new StudentVO();
 	stdArray[index].setStName("홍길동");
 	stdArray[index].setStNum("0001");
 	
